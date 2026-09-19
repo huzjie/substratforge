@@ -1,0 +1,6 @@
+# Core (zero-dependency) — nothing required to run the demo
+# Optional extras:
+#   pip install "substratforge[api]"   -> fastapi + uvicorn + pydantic
+fastapi>=0.100
+uvicorn[standard]>=0.23
+pydantic>=2.0

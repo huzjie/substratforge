@@ -1,0 +1,14 @@
+[Unit]
+Description=SubstratForge agent substrate runtime
+After=network.target
+
+[Service]
+Type=simple
+User=substratforge
+WorkingDirectory=/opt/substratforge
+ExecStart=/opt/substratforge/venv/bin/substratforge serve --config /etc/substratforge/config.yaml
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

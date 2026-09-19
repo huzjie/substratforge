@@ -1,0 +1,37 @@
+# SubstratForge 配置示例（复制为 config.yaml 使用）
+
+server:
+  host: 127.0.0.1
+  port: 8080
+
+sandbox:
+  default_isolation: process      # process | gvisor | microvm
+  default_image: python:3.12
+  workdir: /workspace
+  max_idle_seconds: 300
+  auto_suspend: true
+  root_dir: ~/.substratforge/sandboxes
+
+snapshot:
+  format: tar                     # tar | squashfs | memimg
+  compression: zstd               # zstd | gzip | lz4 | none
+  delta: true
+  dir: ~/.substratforge/snapshots
+
+storage:
+  backend: local                  # local | s3 | minio | memory
+  root: ~/.substratforge/store
+
+scheduler:
+  eviction_policy: lru            # lru | lfu | fifo | none
+  max_suspended_per_host: 1000
+  max_running_per_host: 64
+  idle_suspend_after: 300
+  resume_budget_ms: 500
+
+security:
+  min_isolation: process
+  default_quota:
+    memory_mb: 256
+    disk_mb: 512
+    pids: 64

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: substratforge
+  labels:
+    app: substratforge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: substratforge
+  template:
+    metadata:
+      labels:
+        app: substratforge
+    spec:
+      containers:
+        - name: substrate
+          image: substratforge:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 9090
+              name: metrics
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "2"

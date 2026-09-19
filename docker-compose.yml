@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  substrate:
+    build: .
+    container_name: substratforge
+    ports:
+      - "8080:8080"     # REST API
+      - "9090:9090"     # metrics
+    volumes:
+      - substratforge-data:/root/.substratforge
+    environment:
+      - SUBSTRATEFORGE_ISOLATION=process
+    restart: unless-stopped
+
+volumes:
+  substratforge-data:

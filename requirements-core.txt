@@ -1,0 +1,2 @@
+# Zero-dependency core — the demo/CLI/engine run with stdlib only.
+# (This file is intentionally empty; core has no third-party deps.)
